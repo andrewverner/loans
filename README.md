@@ -1,4 +1,4 @@
-##Loans
+## Loans
 
 1. `docker compose -f .docker/docker-compose.yml up -d --build`
 2. `docker exec -it loans_php bash`
