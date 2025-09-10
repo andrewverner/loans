@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     description: "Запрос на создание клиента",
     required: ["name", "age", "region", "income", "email", "phone"]
 )]
-final readonly class CreateClientRequestDto
+final class CreateClientRequestDto
 {
     public function __construct(
         #[OA\Property(
@@ -98,5 +98,12 @@ final readonly class CreateClientRequestDto
         #[Assert\Regex(pattern: '/^\+[\d]{11}$/')]
         public string $phone,
     ) {
+        if ($this->pin === null) {
+            $this->pin = mt_rand(0, 999999999);
+        }
+
+        if ($this->score === null) {
+            $this->score = mt_rand(0, 1000);
+        }
     }
 }
